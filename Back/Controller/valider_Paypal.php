@@ -1,42 +1,47 @@
 <?php
 
-
 /**
  * @var PDO $pdo
  */
 
-require_once "Back/Includes/databases.php"; // Connexion BDD
 require "Back/Model/reservations.php"; // Fonction reservePlace()
 
+$paypalConfig = require __DIR__ . '/../Config/paypal_config.php';
 
 function validerReservationPaypal()
 {
-    global $pdo;
+    global $pdo, $paypalConfig;
 
     if (!isset($_GET['orderID'])) {
         echo "Erreur : orderID manquant.";
         return;
     }
-    var_dump($_SESSION['paypal_place_id']);
+
 
     $orderID = $_GET['orderID'];
 
-    $clientID = 'Aat1Owvqt9YDQNPVMArNduDSGHe-c9eBpVGw4jpEi1iXfYeueT9DMak0fJh6QqvwrernGAEEQLwqir57';
-    $secret = 'ED6xVocSrXBeOE47nWo3nzsAdTC7RLo52yzgmxWko9ksnrWV_TQdU8SuiD6FiICwCWF9opm64Meg2Gby';
-    $baseURL = 'https://api-m.sandbox.paypal.com';
+    $clientID = $paypalConfig['client_id'];
+    $secret = $paypalConfig['secret'];
+    $baseURL = $paypalConfig['base_url'];
 
-    // 1. Obtenir le token
+    // 1. Obtenir le token d'accès OAuth2
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, "$baseURL/v1/oauth2/token");
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_USERPWD, "$clientID:$secret");
     curl_setopt($ch, CURLOPT_POSTFIELDS, "grant_type=client_credentials");
-    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_HTTPHEADER, [
         "Accept: application/json",
         "Accept-Language: en_US",
     ]);
     $tokenResult = curl_exec($ch);
+
+    if (curl_errno($ch)) {
+        echo "Erreur cURL lors de la récupération du token : " . curl_error($ch);
+        curl_close($ch);
+        return;
+    }
     curl_close($ch);
 
     $tokenData = json_decode($tokenResult, true);
@@ -47,15 +52,21 @@ function validerReservationPaypal()
 
     $accessToken = $tokenData['access_token'];
 
-    // 2. Vérifier la commande
+    // 2. Vérifier la commande avec l'access token
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, "$baseURL/v2/checkout/orders/$orderID");
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_HTTPHEADER, [
         "Content-Type: application/json",
         "Authorization: Bearer $accessToken",
     ]);
     $orderResult = curl_exec($ch);
+
+    if (curl_errno($ch)) {
+        echo "Erreur cURL lors de la vérification de la commande : " . curl_error($ch);
+        curl_close($ch);
+        return;
+    }
     curl_close($ch);
 
     $orderData = json_decode($orderResult, true);
@@ -69,12 +80,6 @@ function validerReservationPaypal()
         $date_debut = $_SESSION['paypal_date_debut'] ?? null;
         $date_fin = $_SESSION['paypal_date_fin'] ?? null;
         $montant = $_SESSION['paypal_montant'] ?? null;
-
-        var_dump($user_id);
-
-        /**
-         * @var PDO $pdo
-         */
 
         if ($user_id && $place_id && $date_debut && $date_fin && $montant) {
             $result = reservePlace($pdo, $user_id, $place_id, $date_debut, $date_fin, $montant);

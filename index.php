@@ -6,7 +6,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-require "Back/Includes/databases.php";
+require "Back/Config/databases.php";
 
 // Déconnexion
 if (isset($_GET['deconnect'])) {
