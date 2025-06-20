@@ -1,0 +1,104 @@
+body {
+    background-color: #2F4F4F; /* couleur ardoise foncée */
+    color: #eee; /* texte clair par défaut */
+    font-family: Arial, sans-serif;
+}
+.separator-line {
+    border: 0;
+    height: 4px;               /* plus épaisse */
+    background-color: #007bff; /* couleur bleu primaire */
+    margin: 1.5rem 0 2rem 0;
+    width: 90%;                /* presque toute la largeur */
+    max-width: 800px;          /* limite la largeur max à celle du formulaire */
+    border-radius: 4px;        /* bords légèrement arrondis */
+}
+
+
+
+.reservation-confirmation {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 30px 40px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+/* Titre */
+.reservation-confirmation h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+/* Détails réservation */
+.reservation-details p {
+    font-weight: 600;
+    margin: 12px 0;
+    font-size: 1.1rem;
+}
+
+/* Formulaire */
+.reservation-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+/* Boutons */
+.btn-submit {
+    width: 100%;
+    padding: 14px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.25s ease;
+}
+
+.btn-submit:hover {
+    background-color: #0056b3;
+}
+
+.btn-secondary {
+    display: inline-block;
+    text-align: center;
+    padding: 12px 20px;
+    color: #555;
+    background-color: #eee;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    border: 1px solid transparent;
+    margin-top: 10px;
+}
+
+.btn-secondary:hover {
+    background-color: #ddd;
+    border-color: #ccc;
+    color: #333;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .reservation-confirmation {
+        padding: 20px 20px;
+        margin: 20px 10px;
+    }
+
+    .reservation-details p {
+        font-size: 1rem;
+    }
+
+    .btn-submit, .btn-secondary {
+        font-size: 1rem;
+        padding: 12px;
+    }
+}

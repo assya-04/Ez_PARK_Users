@@ -1,0 +1,132 @@
+body {
+    background-color: white;
+    margin: 0;
+    padding: 0;
+}
+.header {
+    background-color: white;
+    color: blue;
+    padding: 0;
+    text-align: center;
+    font-weight: bold;
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    width: 100vw; /* Prend toute la largeur de l'écran */
+    height: 150px;
+}
+
+.footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+/* Bouton Menu */
+#web_menu_button {
+    position: fixed;
+    left: 0;
+    top: calc(50% - 30px);
+    width: 60px;
+    height: 60px;
+    background-image: url('https://leria-info.univ-angers.fr/~jeanmichel.richer/img/menu.png');
+    background-color: blue;
+    background-size: 40%;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    z-index: 1000;
+    color: white;
+}
+#web_menu {
+    position: absolute;
+    left: 70px;
+    width: 190px;
+    margin: 40px 0;
+    padding: 0;
+    background: white;
+    border: 2px solid #aaa;
+    display: none;
+}
+#web_menu li {
+    list-style: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    height: 28px;
+    width: 220px;
+    font-size: 18px;
+    margin: 10px 0; /* Espace vertical entre les items */
+
+}
+
+#web_menu li a {
+    display: inline-block;
+    padding: 8px 12px; /* Un bon padding pour respirer */
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #000;
+    background-color: transparent;
+    transition: background 0.3s, color 0.3s;
+}
+#web_menu li a:hover {
+    background-color: blue;
+    color: white;
+}
+#contenu{
+    background-color: white;
+    color: blue;
+}
+#contenu h2{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 80px;
+}
+#contenu h3{
+    font-family: Rage Italic;
+    font-style: italic;
+    color:blue;
+}
+
+/* Titres des tableaux (thead) */
+.table thead th {
+    background-color: #2F4F4F !important; /* fond bleu */
+    color: white !important; /* texte blanc */
+}
+.separator-line {
+    border: 0;
+    height: 10px;               /* plus épaisse */
+    background-color: #2F4F4F; /* couleur bleu primaire */
+    margin: 1.5rem 0 2rem 0;
+    width: 100%;                /* presque toute la largeur */
+    border-radius: 4px;        /* bords légèrement arrondis */
+}
+body {
+    background-color: white; /* Rouge vif */
+    margin: 0;
+    padding: 20px 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Encadrer chaque bloc */
+.section-block {
+    background-color: #ffffff; /* blanc */
+    border: 2px solid #2F4F4F; /* cadre bleu bootstrap */
+    border-radius: 10px;
+    padding: 25px;
+    margin: 30px auto;
+    max-width: 900px; /* largeur max, tu peux ajuster */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    color: #000; /* texte noir pour la lisibilité */
+
+}
+
+
+

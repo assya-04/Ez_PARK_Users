@@ -1,0 +1,123 @@
+* {
+    box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem; /* Ajouté pour éviter que le formulaire colle trop aux bords sur mobiles */
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    color: #2189f1;
+}
+
+.form-wrapper {
+    width: 300px;
+    max-width: 90vw; /* Ne dépasse jamais 90% de la largeur écran */
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 11px rgba(0,0,0,0.1);
+
+}
+
+#errors {
+    color: red;
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn {
+    padding: 0.5rem 1rem;
+    background-color: #0d6efd;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn:hover {
+    background-color: #0b5ed7;
+}
+
+/* Responsive pour petits écrans (smartphones) */
+@media (max-width: 400px) {
+    .form-wrapper {
+        width: 100%;
+        padding: 1rem;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .button-group {
+        justify-content: center;
+    }
+
+    h1 {
+        font-size: 1.5rem; /* Taille de titre un peu réduite */
+    }
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    gap: 2rem; /* un peu d'espace entre logo et formulaire */
+}
+
+@media (max-width: 600px) {
+    .container {
+        flex-direction: column; /* empile verticalement */
+        justify-content: flex-start; /* commencer en haut */
+        padding-top: 2rem; /* espace en haut */
+        height: auto; /* pour ne pas forcer la hauteur */
+    }
+
+    .logo img {
+        width: 150px; /* réduit un peu la taille logo sur mobile */
+        height: auto;
+        margin: 0 auto;
+        display: block;
+    }
+}
+

@@ -1,0 +1,104 @@
+body {
+    background-color: #2F4F4F; /* couleur ardoise foncée */
+    color: #eee; /* texte clair par défaut */
+    font-family: Arial, sans-serif;
+}
+
+.form-container {
+    max-width: 800px; /* élargi le formulaire */
+    margin: 40px auto;
+    padding: 30px 40px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.form-container h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: 700;
+    color: #333;
+}
+
+.form-label {
+    color: #555;
+    margin-bottom: 6px;
+    display: block;
+    font-weight: bold;
+}
+
+.form-control,
+.form-select {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 1rem;
+    border: 1.5px solid #ccc;
+    border-radius: 6px;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+.form-control:focus,
+.form-select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0,123,255,0.5);
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.25s ease;
+    margin-top: 25px;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-outline-secondary {
+    margin-top: 25px;
+    padding: 12px 20px;
+    font-size: 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.error-message {
+    color: #d93025;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+/* Pour aligner les boutons côte à côte dans .form-actions */
+.form-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+/* Pour les icônes avec un peu d'espace à droite */
+.fa {
+    margin-right: 8px;
+}
+
+/* Ajustement responsive si besoin */
+@media (max-width: 576px) {
+    .form-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .btn-primary,
+    .btn-outline-secondary {
+        width: 100%;
+    }
+}
